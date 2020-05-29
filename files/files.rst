@@ -71,16 +71,15 @@
 
 #. 选择 **Enable Access Based Enumeration** 和 **Self Service Restore** 。选择 **Blocked File Types** ，然后输入以逗号分隔的扩展名列表，例如.flv，.mov。
 
-   .. figure::images / 3.png
+.. figure::images / 3.png
 
-   .. Note::
+.. Note::
      
- **Enable Access Based Enumeration** （基于访问的枚举（ABE）功能）将确保文件和文件夹只会对具有读取访问权限的文件和文件夹的用户可见，Windows文件共享通常启用此功能。
+    **Enable Access Based Enumeration** （基于访问的枚举（ABE）功能）将确保文件和文件夹只会对具有读取访问权限的文件和文件夹的用户可见，Windows文件共享通常启用此功能。
     
- **Self Service Restore** （自助服务还原）允许用户利用Windows“以前的版本”功能轻松地将单个文件还原到基于Nutanix快照的历史版本。
+    **Self Service Restore** （自助服务还原）允许用户利用Windows“以前的版本”功能轻松地将单个文件还原到基于Nutanix快照的历史版本。
       
- **Blocked File Types** 允许文件管理员限制某些类型的文件（例如大的个人媒体文件）被写入公司共享。可以在每个服务器或每个共享的基础上进行配置，如果存在不一致，基于每个共享的设置将覆盖服务器范围的设置。
-
+    **Blocked File Types** 允许文件管理员限制某些类型的文件（例如大的个人媒体文件）被写入公司共享。可以在每个服务器或每个共享的基础上进行配置，如果存在不一致，基于每个共享的设置将覆盖服务器范围的设置。
 
 #. 点击 **Next** 。
 
@@ -88,7 +87,7 @@
 #. 查看 **Summary** ，然后单击 **Create** 。
 
 
-   .. figure::images / 4.png
+.. figure::images / 4.png
 
 
    为了确保共享资源可能被多人公平地使用，采用配额是推荐的手段。通过Files，可以基于每个共享，为AD内的单个用户或特定的AD安全组按份额设置软配额或硬配额。
@@ -102,17 +101,17 @@
    - **Quota** - 10 GiB
    - **Enforcement Type** - Hard Limit
 
-   .. figure::images / 9.png
+.. figure::images / 9.png
 
 #. 点击 **Save** 。
 
 
- 测试共享
- ........
+测试共享
+.....................
 
 #. 通过VM控制台以 **non-Administrator NTNXLAB** 域帐户连接到您的 *Initials* \ **-WinTools** VM：
 
-   .. Note::
+.. Note::
 
       您将无法通过RDP使用这些帐户进行连接。
 
@@ -126,7 +125,7 @@
 
    .. figure::images / 16.png
    
-   .. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
+.. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
 
 #. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \`` 
 
@@ -140,7 +139,7 @@
 
 #. 将zip文件的内容解压到您的文件共享中。
 
-   .. figure::images / 5.png
+.. figure::images / 5.png
 
    -在Files群集的部署过程中， **NTNXLAB \\ Administrator** 用户被默认指定为文件管理员，默认情况下，授予该用户对所有共享的读/写访问权限。
 
@@ -189,7 +188,7 @@
 
 #. 打开 **PowerShell** 并尝试通过执行以下命令来创建文件类型被设定为被阻止的文件：
 
-   .. code-block:: PowerShell
+.. code-block:: PowerShell
 
        New-Item \\BootcampFS\INITIALS-FiestaShare\MyFile.flv
 
@@ -200,7 +199,7 @@
 #. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
 
 
-   .. figure::images / 11.png
+.. figure::images / 11.png
 
 
    在下一个练习中，您将看到Files如何提供有关每个文件服务器和共享使用情况的更深入的洞察分析。
@@ -213,30 +212,28 @@ File Analytics
 
 #. 在 **Prism Element > File Server > File Server** 中，选择 **BootcampFS** ，然后单击 **File Analytics** 。
 
+.. figure::images / 12.png
 
-   .. figure::images / 12.png
 
-
-   .. Note::
+.. Note::
 
 
       文件分析应该已经启用，但是如果出现提示，您将需要提供Files的管理员帐户，因为分析将需要能够扫描所有共享。
-
 
       - **用户名**：NTNXLAB \\ administrator
 
       - **密码**：nutanix/4u
 
-      .. figure::images / old13.png
+.. figure::images / old13.png
 
 
 #. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
 
 
-   .. figure::images / 14.png
+.. figure::images / 14.png
 
 
-   .. Note::
+.. Note::
 
 
       如果您的共享未显示在主页面，请给它一些时间来完成数据填充...
@@ -247,34 +244,34 @@ File Analytics
 #. 您应该会看到 **Data Age** ，**File Distribution by Size** 和 **File Distribution by Type** 仪表板更新。
 
 
-   .. figure::images / 15.png
+.. figure::images / 15.png
 
 
 #. 在您的 *Initials* \ **-WinTools** VM中，通过打开 **Sample Data** 目录下的几个文件来触发一些审计跟踪活动。
 
 
-   ..注意:: 如果使用OpenOffice打开文件，则可能需要完成该应用程序的一些简短向导操作。
+.. Note:: 如果使用OpenOffice打开文件，则可能需要完成该应用程序的一些简短向导操作。
 
 
 #. 在浏览器中刷新 **Dashboard** 页面，以查看 **Top 5 Active Users**，**Top 5 Accessed Files** 和 **File Operations** 面板的更新。
 
 
-   .. figure::images / 17.png
+.. figure::images / 17.png
 
 
 #. 要访问您的用户帐户的审计跟踪活动，请在 **Top 5 Active Users** 下单击您的用户。
 
 
-   .. figure::images / 17b.png
+.. figure::images / 17b.png
 
 
 #. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
 
 
-   .. figure::images / 18.png
+.. figure::images / 18.png
 
 
-   .. Note::
+.. Note::
 
 
       您可以使用通配符进行搜索，例如 **.doc** 
@@ -284,10 +281,10 @@ File Analytics
 #. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
 
 
-      .. figure::images / 19.png
+.. figure::images / 19.png
 
 
-      .. Note::
+.. Note::
 
 
          Anomaly Rules（异常规则）是基于每个文件服务器定义的，因此以下规则可能已经由其他用户创建。
@@ -306,9 +303,7 @@ File Analytics
 
 #. 在 **Actions** 下，单击 **Save** 。
 
-
 #. 选择 **+ Configure new anomaly** ，并使用以下设置创建其他规则：
-
 
       - **Events**: Create
       - **Minimum Operation %**: 1
@@ -320,7 +315,7 @@ File Analytics
 #. 在 **Actions** 下，单击 **Save** 。
 
 
-      .. figure::images / 20.png
+.. figure::images / 20.png
 
 
 #. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
@@ -332,13 +327,13 @@ File Analytics
 #. 删除原始样本数据文件夹。
 
 
-      .. figure::images / 21.png
+.. figure::images / 21.png
 
 
   在等待异常警报展现之前，接下来我们将创建一个权限拒绝分析。
 
 
-      ..Note:: 异常警报引擎每30分钟运行一次。虽然可以从File Analytics VM配置此设置，但修改此变量不在本练习的范围之内。
+.. Note:: 异常警报引擎每30分钟运行一次。虽然可以从File Analytics VM配置此设置，但修改此变量不在本练习的范围之内。
 
 
     #. 在 *Initials* \ **-FiestaShare** 共享中创建一个名为 *Initials* \ **-MyFolder** 的新目录。
@@ -347,25 +342,22 @@ File Analytics
     #. 在 *Initials* \ **-MyFolder** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt** 。
 
 
-      .. figure::images / 22.png
+.. figure::images / 22.png
 
 
     #. 右键单击 *Initials* \ **-MyFolder>Properties** 。 选择 **Security** 选项卡，然后单击 **Advanced** 。请注意，**用户（BootcampFS \\ Users)** 缺乏 **Full Control** 权限，这意味着他们将无法删除其他用户拥有的文件。
 
-
-   .. figure::images / 23.png
+.. figure::images / 23.png
 
 
     #. 按住 **Shift** 键并右键单击任务栏中的 **PowerShell** 图标，然后选择以其他用户身份运行，以另一个非管理员用户帐户的身份打开PowerShell窗口。
 
-
-   .. figure::images / 24.png
+.. figure::images / 24.png
 
 
     #. 将目录更改为 *Initials* \ **-FiestaShare** 共享中的 * Initials * \ **-MyFolder** 。
 
-
-        .. code-block:: bash
+.. code-block:: bash
 
 
            cd \\ BootcampFS.ntnxlab.local \ XYZ-FiestaShare \ XYZ-MyFolder
@@ -398,7 +390,7 @@ File Analytics
     #. 从工具栏中选择 **Anomalies** ，以查看检测到的异常的概述。
 
 
-      .. figure::images / 28.png
+   .. figure::images / 28.png
 
 
 File Analytics将简单而强大的信息交给存储管理员，使他们能够对Nutanix Files环境中的使用情况和访问权限有更加清晰的了解和审核能力。
@@ -412,23 +404,23 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
  启用NFS协议
  .....................
 
- .. Note::
+.. Note::
 
    每个文件服务器只需要执行一次NFS协议启用操作，并且在您的环境中可能已经完成。如果已启用NFS，请继续进行 `配置用户映射` 。
 
 #. 在 **Prism Element > File Server** 中，选择您的文件服务器，然后单击 **Protocol Management > Directory Services** 。
 
-   .. figure:: images / 29b.png
+.. figure:: images / 29b.png
 
 
 #. 选择 **Use NFS Protocol** 和 **Unmanaged** 用户管理和身份验证，然后单击 **Update** 。
 
 
-   .. figure:: images / 30b.png
+.. figure:: images / 30b.png
 
 
- 创建导出
- ..........
+创建导出
+.....................
 
 #. 在 **Prism > File Server** 中，单击 **+ Share/Export** 。
 
@@ -442,7 +434,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
    - **Select Protocol** - NFS
 
 
-   .. figure:: images / 24b.png
+.. figure:: images / 24b.png
 
 #. 点击 **Next** 。
 
@@ -455,7 +447,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
    - Select **+ Add exceptions** 
    - **Clients with Read-Write Access** - *群集网络的前三个八位地址段* （例如10.38.1. \*）
 
-   .. figure:: images / 25b.png
+.. figure:: images / 25b.png
 
 
    默认情况下，NFS导出将允许对挂载了该导出的任何主机进行读/写访问，但也可以将其限制为特定的IP或IP段。
@@ -470,7 +462,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 首先，您将需要准备一个CentOS VM用作NFS导出的客户端。
 
- .. note:: 如果您已将linux_tools_vm 在另一个实验中部署过，则可以将此VM用作NFS客户端。
+.. note:: 如果您已将linux_tools_vm 在另一个实验中部署过，则可以将此VM用作NFS客户端。
 
 #. 在 **Prism> VM> Table** 中，单击 **Create VM** 。
 
@@ -502,7 +494,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 #. 执行以下命令：
 
-   .. code-block:: bash
+.. code-block:: bash
 
        [root @ CentOS〜] #. yum install -y nfs-utils #. 这将安装NFSv4客户端
 
@@ -519,7 +511,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
        tmpfs                           1.9G     0  1.9G   0% /sys/fs/cgroup
        /dev/sda1                       494M  141M  353M  29% /boot
        tmpfs                           377M     0  377M   0% /run/user/0
-        *intials* -Files.ntnxlab.local:/             1.0T  7.0M  1.0T   1% /afsmnt
+       *initials*-Files.ntnxlab.local:/  1.0T  7.0M  1.0T   1% /afsmnt
        [root@CentOS ~]# ls -l /filesmnt/
        total 1
        drwxrwxrwx. 2 root root 2 Mar  9 18:53 xyz-logs
@@ -529,14 +521,14 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 #. 重新启动VM，并观察到NFS导出目录不再被挂载。要保持永久挂载，通过执行以下命令将其添加到 ``/etc/fstab`` 配置文件中：
 
-  .. code-block:: bash
+.. code-block:: bash
 
        echo 'BootcampFS.ntnxlab.local:/ /filesmnt nfs4' >> /etc/fstab
 
 
 #. 以下命令会用随机数据填充100个2MB的文件到 ``/filesmnt/logs`` 中：
 
-    .. code-block:: bash
+.. code-block:: bash
 
        mkdir /filesmnt/xyz-logs/host1
        for i in {1..100}; do dd if=/dev/urandom bs=8k count=256 of=/filesmnt/xyz-logs/host1/file$i; done
@@ -552,8 +544,8 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 Files不只可以分别提供SMB共享和NFS导出的功能-还可以支持提供对同一共享的多协议访问的功能。在下面的练习中，您将配置现有的 
  *Initials* \ **-FiestaShare** 以允许NFS访问，从而使开发人员可以将应用程序日志重定向到该位置进行存储。
 
- 配置用户映射
- .......................
+配置用户映射
+.......................
 
 Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使用原生协议应用。使用非原生协议的任何访问请求都需要用户或组映射到从原生协议端应用的权限。用户和组映射的映射可以通过多种方法实现，包括基于规则的映射，精确映射和默认映射。我们将首先配置默认映射：
 
@@ -563,7 +555,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 #. 在 **Default Mapping** 页面上，选择 **Deny access to NFS export** 和 **Deny access to SMB share** 作为未找到映射时的默认值。
 
-   .. figure:: images / 31.png
+.. figure:: images / 31.png
 
 #. 单击 **Next > Save** 以完成默认映射。
 
@@ -571,18 +563,18 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 #. 在 **Basics** 下，选择 **Enable multiprotocol access for NFS** ，然后单击 **Next** 。
 
-   .. figure:: images / 32.png
+.. figure:: images / 32.png
 
 
 #. 在 **Settings > Multiprotocol Access** 下，选择 **Simultaneous access to the same files from both protocols** 。
 
-   .. figure:: images / 33.png
+.. figure:: images / 33.png
 
 
 #. 单击 **Next > Save** 以完成更新共享设置。
 
- 测试导出
- .......................
+测试导出
+.......................
  
 #. 要测试NFS导出，请通过SSH连接到 *Initials* \ **-LinuxToolsVM** VM：
 
@@ -591,7 +583,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 #. 执行以下命令：
 
-      .. code-block:: bash
+.. code-block:: bash
 
        [root@CentOS ~]# yum install -y nfs-utils #This installs the NFSv4 client
        [root@CentOS ~]# mkdir /filesmulti
@@ -600,13 +592,13 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
        dir: cannot open directory /filesmulti: Permission denied
        [root@CentOS ~]#
 
-   .. note:: 安装操作区分大小写。
+.. note:: 安装操作区分大小写。
 
 因为默认映射是拒绝访问，所以会出现“权限被拒绝”错误。现在，您将添加一个精确（explicit）映射，以允许非原生NFS协议用户访问。我们将需要获取用户ID（UID）来创建精确映射。
 
 #. 执行以下命令并记下UID：
 
-     .. code-block:: bash
+.. code-block:: bash
 
        [root@CentOS ~]# id
        uid=0(root) gid=0(root) groups=0(root)
@@ -624,8 +616,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
    - **NFS ID** - UID from previous step (0 if root)
    - **User/Group** - User
 
-   .. figure:: images / 34.png
-
+.. figure:: images / 34.png
 
 #. 在 **Actions** 下，单击 **Save** 。
 
@@ -633,7 +624,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 #. 返回您的 *Initials*\ **-LinuxToolsVM** 的SSH会话，然后尝试再次访问共享：
 
-    .. code-block:: bash
+.. code-block:: bash
 
        [root@CentOS ~]# dir /filesmulti
        Documents\ -\ Copy  Graphics\ -\ Copy  Pictures\ -\ Copy  Presentations\ -\ Copy  Recordings\ -\ Copy  Technical\ PDFs\ -\ Copy  XYZ-MyFolder
