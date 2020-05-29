@@ -15,7 +15,7 @@
 为了节省实验时间并最大程度实现基础架构的资源共享，讲师已经在您的群集上部署了一个Files的服务实例，名为 **BootcampFS** 。 **BootcampFS** 是一个单节点的实例，但典型的 **Nutanix Files** 部署将从3个文件服务器VM开始，并具有根据性能要求进行横向或纵向扩展的能力。
 
  
- **BootcampFS** 已配置为使用 **Primary** 网络用于从 **CVM** 到 **Volume Groups** 的iSCSI连接，从而实现与后端存储进行通信，并且将**Secondary** 网络用于与客户端，Active Directory，防病毒服务等的通信。
+ **BootcampFS** 已配置为使用 **Primary** 网络用于从 **CVM** 到 **Volume Groups** 的iSCSI连接，从而实现与后端存储进行通信，并且将 **Secondary** 网络用于与客户端，Active Directory，防病毒服务等的通信。
 
 
 .. figure::images / 1.png
@@ -35,7 +35,7 @@
  .. figure::images / 10.png
 
 
-观察默认的自助服务还原计划，此功能控制着Windows文件夹属性中- **以前的版本** 功能的快照计划。支持Windows **以前的版本**的功能，可以允许最终用户自助回滚对文件的更改，而无需依赖存储或备份管理员。请注意，这些本地快照无法保护文件服务器群集免受本地故障的影响，如果要实现此功能，可以将整个文件服务器群集复制到远程Nutanix群集中。
+观察默认的自助服务还原计划，此功能控制着Windows文件夹属性中- **以前的版本** 功能的快照计划。支持Windows **以前的版本** 的功能，可以允许最终用户自助回滚对文件的更改，而无需依赖存储或备份管理员。请注意，这些本地快照无法保护文件服务器群集免受本地故障的影响，如果要实现此功能，可以将整个文件服务器群集复制到远程Nutanix群集中。
 
 
 管理Windows SMB共享
@@ -104,7 +104,7 @@
 
    .. figure::images / 9.png
 
- #. 点击 **Save** 。
+#. 点击 **Save** 。
 
 
  测试共享
@@ -128,9 +128,9 @@
    
    .. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
 
-#. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \'' 
+#. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \`` 
 
-#. 在您的虚拟机 *Initials* \ **-WinTools ** 桌面中打开浏览器，然后下载示例数据以填充到您的共享中：
+#. 在您的虚拟机 *Initials* \ **-WinTools** 桌面中打开浏览器，然后下载示例数据以填充到您的共享中：
 
 
    - **如果使用PHX群集** -http://10.42.194.11/workshop_staging/peer/SampleData_Small.zip
@@ -230,7 +230,7 @@ File Analytics
       .. figure::images / old13.png
 
 
-#. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击：fa：`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
+#. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
 
 
    .. figure::images / 14.png
@@ -268,7 +268,7 @@ File Analytics
    .. figure::images / 17b.png
 
 
- #. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
+#. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
 
 
    .. figure::images / 18.png
@@ -281,7 +281,7 @@ File Analytics
 
  ..
 
-    #. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击 :fa:`gear` **> Define Anomaly Rules**。
+#. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
 
 
       .. figure::images / 19.png
@@ -293,7 +293,7 @@ File Analytics
          Anomaly Rules（异常规则）是基于每个文件服务器定义的，因此以下规则可能已经由其他用户创建。
 
 
-    #. 点击 **Define Anomaly Rules** ，并使用以下设置创建规则：
+#. 点击 **Define Anomaly Rules** ，并使用以下设置创建规则：
 
 
       - **Events:** Delete
@@ -304,10 +304,10 @@ File Analytics
       - **Interval:** 1
 
 
-    #. 在 **Actions** 下，单击 **Save** 。
+#. 在 **Actions** 下，单击 **Save** 。
 
 
-    #. 选择 **+ Configure new anomaly** ，并使用以下设置创建其他规则：
+#. 选择 **+ Configure new anomaly** ，并使用以下设置创建其他规则：
 
 
       - **Events**: Create
@@ -317,34 +317,34 @@ File Analytics
       - **Type**: Hourly
       - **Interval**: 1
 
-    #. 在 **Actions** 下，单击 **Save** 。
+#. 在 **Actions** 下，单击 **Save** 。
 
 
       .. figure::images / 20.png
 
 
-    #. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
+#. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
 
 
-    #. 要测试异常警报，请返回您的 *Initials* \ **-WinTools** VM，并在您的 * Initials * \ **-FiestaShare** 共享中制作第二个样本数据副本（通过复制/粘贴）。
+#. 要测试异常警报，请返回您的 *Initials* \ **-WinTools** VM，并在您的 *Initials* \ **-FiestaShare** 共享中制作第二个样本数据副本（通过复制/粘贴）。
 
 
-    #. 删除原始样本数据文件夹。
+#. 删除原始样本数据文件夹。
 
 
       .. figure::images / 21.png
 
 
-      在等待异常警报展现之前，接下来我们将创建一个权限拒绝分析。
+  在等待异常警报展现之前，接下来我们将创建一个权限拒绝分析。
 
 
-      ..注意::异常警报引擎每30分钟运行一次。虽然可以从File Analytics VM配置此设置，但修改此变量不在本练习的范围之内。
+      ..Note:: 异常警报引擎每30分钟运行一次。虽然可以从File Analytics VM配置此设置，但修改此变量不在本练习的范围之内。
 
 
-    #. 在 *Initials* \ **-FiestaShare ** 共享中创建一个名为 *Initials* \ **-MyFolder** 的新目录。
+    #. 在 *Initials* \ **-FiestaShare** 共享中创建一个名为 *Initials* \ **-MyFolder** 的新目录。
 
 
-    #. 在 *Initials* \ **-MyFolder ** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt ** 。
+    #. 在 *Initials* \ **-MyFolder** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt** 。
 
 
       .. figure::images / 22.png
