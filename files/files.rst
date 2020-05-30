@@ -20,7 +20,7 @@
  **BootcampFS** 已配置为使用 **Primary** 网络用于从 **CVM** 到 **Volume Groups** 的iSCSI连接，从而实现与后端存储进行通信，并且将 **Secondary** 网络用于与客户端，Active Directory，防病毒服务等的通信。
 
 
-.. figure::images / 1.png
+.. figure:: images / 1.png
 
 
 .. Note::
@@ -34,7 +34,7 @@
 在 **Prism Element** > **File Server** > **File Server** 中，选择 **BootcampFS** ，然后单击 **Protect** 。
 
 
- .. figure::images / 10.png
+.. figure:: images / 10.png
 
 
 观察默认的自助服务还原计划，此功能控制着Windows文件夹属性中- **以前的版本** 功能的快照计划。支持Windows **以前的版本** 的功能，可以允许最终用户自助回滚对文件的更改，而无需依赖存储或备份管理员。请注意，这些本地快照无法保护文件服务器群集免受本地故障的影响，如果要实现此功能，可以将整个文件服务器群集复制到远程Nutanix群集中。
@@ -60,7 +60,7 @@
    - **Max Size (Optional)** - 200GiB
    - **Select Protocol** - SMB
 
-   .. figure::images / 2.png
+.. figure:: images / 2.png
 
 
    因为此环境为单节点AOS群集，因此只有一个文件服务器VM，所以所有共享都是 **Standard** 共享。Standard共享意味着共享中的所有一级目录和文件以及与共享的连接均由单个文件服务器VM提供。
@@ -73,7 +73,7 @@
 
 4. 选择 **Enable Access Based Enumeration** 和 **Self Service Restore** 。选择 **Blocked File Types** ，然后输入以逗号分隔的扩展名列表，例如.flv，.mov。
 
-.. figure::images / 3.png
+.. figure:: images / 3.png
 
 .. Note::
      
@@ -106,7 +106,7 @@
    - **Quota** - 10 GiB
    - **Enforcement Type** - Hard Limit
 
-.. figure::images / 9.png
+.. figure:: images / 9.png
 
 9. 点击 **Save** 。
 
@@ -129,7 +129,7 @@
    - **密码**    nutanix/4u
 ..
 
-   .. figure::images / 16.png
+.. figure:: images / 16.png
    
 .. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
 
@@ -145,18 +145,18 @@
 
 4. 将zip文件的内容解压到您的文件共享中。
 
-.. figure::images / 5.png
+.. figure:: images / 5.png
 
    -在Files群集的部署过程中， **NTNXLAB \\ Administrator** 用户被默认指定为文件管理员，默认情况下，授予该用户对所有共享的读/写访问权限。
 
    -管理其他用户的访问权限与任何其他SMB共享的方式相同。
 
 
-5. 在``\\ BootcampFS.ntnxlab.local \''中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
+5. 在 ``\\ BootcampFS.ntnxlab.local \`` 中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
 
 6. 选择 **Security **选项卡，然后单击 **Advanced** 。
 
-.. figure::images / 6.png
+.. figure:: images / 6.png
 
 
 7. 选择 **Users（BootcampFS \\ Users**，然后单击 **Remove** 。
@@ -168,7 +168,7 @@
 9. 单击 **Select a principal**，然后在 **Object Name ** 字段中指定 **Everyone** 。点击 **OK** 。
 
 
-.. figure::images / 7.png
+.. figure:: images / 7.png
 
 
 10. 填写以下字段，然后单击 **OK** ：
@@ -185,7 +185,7 @@
 
       -选择 **Write** 
 
-.. Figure:: images / 8.png
+.. figure:: images / 8.png
 
 
 11. 单击 **OK > OK > OK** 以保存权限更改。
@@ -207,7 +207,7 @@
 13. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
 
 
-.. figure::images / 11.png
+.. figure:: images / 11.png
 
 
    在下一个练习中，您将看到Files如何提供有关每个文件服务器和共享使用情况的更深入的洞察分析。
@@ -220,7 +220,7 @@ File Analytics
 
 1. 在 **Prism Element > File Server > File Server** 中，选择 **BootcampFS** ，然后单击 **File Analytics** 。
 
-.. figure::images / 12.png
+.. figure:: images / 12.png
 
 
 .. Note::
@@ -233,13 +233,13 @@ File Analytics
       - **密码**：nutanix/4u
 ..
 
-.. figure::images / old13.png
+.. figure:: images / old13.png
 
 
 2. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
 
 
-.. figure::images / 14.png
+.. figure:: images / 14.png
 
 
 .. Note::
@@ -254,7 +254,7 @@ File Analytics
 4. 您应该会看到 **Data Age** ，**File Distribution by Size** 和 **File Distribution by Type** 仪表板更新。
 
 
-.. figure::images / 15.png
+.. figure:: images / 15.png
 
 
 5. 在您的 *Initials* \ **-WinTools** VM中，通过打开 **Sample Data** 目录下的几个文件来触发一些审计跟踪活动。
@@ -266,19 +266,19 @@ File Analytics
 6. 在浏览器中刷新 **Dashboard** 页面，以查看 **Top 5 Active Users**，**Top 5 Accessed Files** 和 **File Operations** 面板的更新。
 
 
-.. figure::images / 17.png
+.. figure:: images / 17.png
 
 
 7. 要访问您的用户帐户的审计跟踪活动，请在 **Top 5 Active Users** 下单击您的用户。
 
 
-.. figure::images / 17b.png
+.. figure:: images / 17b.png
 
 
 8. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
 
 
-.. figure::images / 18.png
+.. figure:: images / 18.png
 
 
 .. Note::
@@ -291,7 +291,7 @@ File Analytics
 9. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
 
 
-.. figure::images / 19.png
+.. figure:: images / 19.png
 
 
 .. Note::
