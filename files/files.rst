@@ -26,7 +26,7 @@
 .. Note::
 
   在生产环境中部署Files时，通常需要使用专用的虚拟网络来承载客户端和存储流量，当使用两个网络时，根据设计，文件将禁止客户端网络中的虚拟机直接访问存储网络，这意味着此环境中分配给主网络的VM将无法直接访问文件共享目录。
-
+..
 
 由于Nutanix Files利用Nutanix Volume Group 进行数据存储，因此可以直接复用相同的存储优化算法，例如压缩，纠删码，快照和数据复制功能等。
 
@@ -81,9 +81,9 @@
     
     **Self Service Restore** （自助服务还原）允许用户利用Windows“以前的版本”功能轻松地将单个文件还原到基于Nutanix快照的历史版本。
       
-    **Blocked File Types** 允许文件管理员限制某些类型的文件（例如大的个人媒体文件）被写入公司共享。可以在每个服务器或每个共享的基础上进行配置，如果存在不一致，基于每个共享的设置将覆盖服务器范围的设置。
+    **Blocked File Types** 允许文件管理员限制某些类型的文件（例如大的个人媒体文件）被写入公司共享。可以在每个服务器或每个共享的基础上进行配置，如果存在不一致，基于每个共享的设置将覆盖服务器范围的设置.
     
-    
+..
 
 5. 点击 **Next** 。
 
@@ -120,13 +120,14 @@
 
       您将无法通过RDP使用这些帐户进行连接。
 
-   -user01 - user25
+   - user01 - user25
 
-   -devuser01 - devuser25
+   - devuser01 - devuser25
 
-   -operator01 - operator25
+   - operator01 - operator25
 
    - **密码**    nutanix/4u
+..
 
    .. figure::images / 16.png
    
@@ -151,26 +152,26 @@
    -管理其他用户的访问权限与任何其他SMB共享的方式相同。
 
 
-..  1). 在``\\ BootcampFS.ntnxlab.local \''中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
+5. 在``\\ BootcampFS.ntnxlab.local \''中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
 
-    2). 选择 **Security **选项卡，然后单击 **Advanced** 。
+6. 选择 **Security **选项卡，然后单击 **Advanced** 。
 
-      .. figure::images / 6.png
-
-
-    3). 选择 **Users（BootcampFS \\ Users**，然后单击 **Remove** 。
+.. figure::images / 6.png
 
 
-    4). 点击 **Add** 。
+7. 选择 **Users（BootcampFS \\ Users**，然后单击 **Remove** 。
 
 
-    5). 单击 **Select a principal**，然后在 **Object Name ** 字段中指定 **Everyone** 。点击 **OK** 。
+8. 点击 **Add** 。
 
 
-   .. figure::images / 7.png
+9. 单击 **Select a principal**，然后在 **Object Name ** 字段中指定 **Everyone** 。点击 **OK** 。
 
 
-    6). 填写以下字段，然后单击 **OK** ：
+.. figure::images / 7.png
+
+
+10. 填写以下字段，然后单击 **OK** ：
 
       - **Type** -允许
 
@@ -180,31 +181,30 @@
 
       -选择 **List folder contents** 
 
-      -选择 **Read ** 
+      -选择 **Read** 
 
-      -选择 **Write ** 
+      -选择 **Write** 
+
+.. Figure:: images / 8.png
 
 
-      .. Figure :: images / 8.png
-
-
-    7). 单击 **OK > OK > OK** 以保存权限更改。
+11. 单击 **OK > OK > OK** 以保存权限更改。
 
 
    现在，所有用户都可以在 *Initials* \ **-FiestaShare** 共享中创建文件夹和文件。
 
 
-5. 打开 **PowerShell** 并尝试通过执行以下命令来创建文件类型被设定为被阻止的文件：
+12. 打开 **PowerShell** 并尝试通过执行以下命令来创建文件类型被设定为被阻止的文件：
 
 .. code-block:: PowerShell
 
        New-Item \\BootcampFS\INITIALS-FiestaShare\MyFile.flv
 
 
-   观察到创建新文件被拒绝。
+观察到创建新文件被拒绝。
 
 
-6. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
+13. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
 
 
 .. figure::images / 11.png
@@ -231,6 +231,7 @@ File Analytics
       - **用户名**：NTNXLAB \\ administrator
 
       - **密码**：nutanix/4u
+..
 
 .. figure::images / old13.png
 
@@ -246,6 +247,7 @@ File Analytics
 
       如果您的共享未显示在主页面，请给它一些时间来完成数据填充...
 
+..
 
 3. 关闭 **Scan File System** 窗口并刷新浏览器。
 
@@ -297,6 +299,8 @@ File Analytics
 
          Anomaly Rules（异常规则）是基于每个文件服务器定义的，因此以下规则可能已经由其他用户创建。
 
+..
+
 
 10. 点击 **Define Anomaly Rules** ，并使用以下设置创建规则：
 
@@ -322,7 +326,7 @@ File Analytics
 13. 在 **Actions** 下，单击 **Save** 。
 
 
-.. figure::images / 20.png
+.. figure:: images / 20.png
 
 
 14. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
@@ -334,7 +338,7 @@ File Analytics
 16. 删除原始样本数据文件夹。
 
 
-.. figure::images / 21.png
+.. figure:: images / 21.png
 
 
   在等待异常警报展现之前，接下来我们将创建一个权限拒绝分析。
@@ -349,17 +353,17 @@ File Analytics
     2). 在 *Initials* \ **-MyFolder** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt** 。
 
 
-.. figure::images / 22.png
+.. figure:: images / 22.png
 
 
     3). 右键单击 *Initials* \ **-MyFolder>Properties** 。 选择 **Security** 选项卡，然后单击 **Advanced** 。请注意，**用户（BootcampFS \\ Users)** 缺乏 **Full Control** 权限，这意味着他们将无法删除其他用户拥有的文件。
 
-.. figure::images / 23.png
+.. figure:: images / 23.png
 
 
     4). 按住 **Shift** 键并右键单击任务栏中的 **PowerShell** 图标，然后选择以其他用户身份运行，以另一个非管理员用户帐户的身份打开PowerShell窗口。
 
-.. figure::images / 24.png
+.. figure:: images / 24.png
 
 
     5). 将目录更改为 *Initials* \ **-FiestaShare** 共享中的 * Initials * \ **-MyFolder** 。
@@ -379,25 +383,25 @@ File Analytics
            rm .\XYZ-file.txt
 
 
-      .. figure::images / 25.png
+.. figure:: images / 25.png
 
 
     7). 返回 **Analytics > Dashboard** ，并注意 **Permission Denials** 和 **Anomaly Alerts** 小部件已更新。
 
 
-      .. figure::images / 26.png
+.. figure:: images / 26.png
 
 
     8). 在 **Permission Denials** 下，选择您的用户帐户以查看完整的 **Audit Trail** ，并确认可以观察到您尝试删除的特定文件的事件，以及相应的IP地址和时间戳信息都已被记录。
 
 
-   .. figure::images / 27.png
+.. figure:: images / 27.png
 
 
     9). 从工具栏中选择 **Anomalies** ，以查看检测到的异常的概述。
 
 
-   .. figure::images / 28.png
+.. figure:: images / 28.png
 
 
 File Analytics将简单而强大的信息交给存储管理员，使他们能够对Nutanix Files环境中的使用情况和访问权限有更加清晰的了解和审核能力。
@@ -414,6 +418,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 .. Note::
 
    每个文件服务器只需要执行一次NFS协议启用操作，并且在您的环境中可能已经完成。如果已启用NFS，请继续进行 `配置用户映射` 。
+..
 
 1. 在 **Prism Element > File Server** 中，选择您的文件服务器，然后单击 **Protocol Management > Directory Services** 。
 
@@ -469,7 +474,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 首先，您将需要准备一个CentOS VM用作NFS导出的客户端。
 
-.. note:: 如果您已将linux_tools_vm 在另一个实验中部署过，则可以将此VM用作NFS客户端。
+.. Note:: 如果您已将linux_tools_vm 在另一个实验中部署过，则可以将此VM用作NFS客户端。
 
 1. 在 **Prism> VM> Table** 中，单击 **Create VM** 。
 
