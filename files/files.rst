@@ -4,7 +4,9 @@
 通过Nutanix Files 整合您的存储系统
 --------------------------------
 
+
  *完成本实验预计需要45分钟*
+ 
 
 传统的专有文件存储环境一直是IT部门的另一个信息孤岛，不仅导致了不必要的复杂性，也会遭受到与SAN存储中相同的扩容问题和难以持续创新的困扰。Nutanix相信在企业云环境中没有信息孤岛存在的空间。通过将文件存储作为一种应用程序，并运行于经过验证的HCI核心之上，Nutanix Files通过一致的一键式的体验，为用户提供了新的高性能，弹性扩展并具备快速创新的能力的文件服务选项。
 
@@ -46,10 +48,10 @@
 创建共享
 .....................
 
-#. 在 **Prism Element>File Server** 中，单击 **++Share/Export**。
+1. 在 **Prism Element>File Server** 中，单击 **++Share/Export**。
 
 
-#. 填写以下字段：
+2. 填写以下字段：
 
    - **Name** - *Initials*\ **-FiestaShare**  
    - **Description (Optional)** - Fiesta app team share, used by PM, ENG, and MKT
@@ -66,10 +68,10 @@
    如果这是三个节点的文件集群或更大的集群，则可以选择创建 **Distributed** 共享。Distributed共享适用于主目录，用户配置文件和应用程序文件夹。这种类型的共享在所有文件VM上进行一级目录的均匀分布，并在文件群集内的所有文件VM之间实现连接的负载均衡。
 
 
-#. 点击 **下一步** 。
+3. 点击 **下一步** 。
 
 
-#. 选择 **Enable Access Based Enumeration** 和 **Self Service Restore** 。选择 **Blocked File Types** ，然后输入以逗号分隔的扩展名列表，例如.flv，.mov。
+4. 选择 **Enable Access Based Enumeration** 和 **Self Service Restore** 。选择 **Blocked File Types** ，然后输入以逗号分隔的扩展名列表，例如.flv，.mov。
 
 .. figure::images / 3.png
 
@@ -80,11 +82,13 @@
     **Self Service Restore** （自助服务还原）允许用户利用Windows“以前的版本”功能轻松地将单个文件还原到基于Nutanix快照的历史版本。
       
     **Blocked File Types** 允许文件管理员限制某些类型的文件（例如大的个人媒体文件）被写入公司共享。可以在每个服务器或每个共享的基础上进行配置，如果存在不一致，基于每个共享的设置将覆盖服务器范围的设置。
+    
+    
 
-#. 点击 **Next** 。
+5. 点击 **Next** 。
 
 
-#. 查看 **Summary** ，然后单击 **Create** 。
+6. 查看 **Summary** ，然后单击 **Create** 。
 
 
 .. figure::images / 4.png
@@ -92,9 +96,10 @@
 
    为了确保共享资源可能被多人公平地使用，采用配额是推荐的手段。通过Files，可以基于每个共享，为AD内的单个用户或特定的AD安全组按份额设置软配额或硬配额。
 
-#. 在 **Prism Element > File Server > Share/Export** 中，选择您的共享，然后单击 **+ Add Quota Policy** 。
 
-#. 填写以下字段，然后单击 **Save** ：
+7. 在 **Prism Element > File Server > Share/Export** 中，选择您的共享，然后单击 **+ Add Quota Policy** 。
+
+8. 填写以下字段，然后单击 **Save** ：
 
    - Select **Group** 
    - **User or Group** - SSP Developers
@@ -103,13 +108,13 @@
 
 .. figure::images / 9.png
 
-#. 点击 **Save** 。
+9. 点击 **Save** 。
 
 
 测试共享
 .....................
 
-#. 通过VM控制台以 **non-Administrator NTNXLAB** 域帐户连接到您的 *Initials* \ **-WinTools** VM：
+1. 通过VM控制台以 **non-Administrator NTNXLAB** 域帐户连接到您的 *Initials* \ **-WinTools** VM：
 
 .. Note::
 
@@ -127,9 +132,9 @@
    
 .. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
 
-#. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \`` 
+2. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \`` 
 
-#. 在您的虚拟机 *Initials* \ **-WinTools** 桌面中打开浏览器，然后下载示例数据以填充到您的共享中：
+3. 在您的虚拟机 *Initials* \ **-WinTools** 桌面中打开浏览器，然后下载示例数据以填充到您的共享中：
 
 
    - **如果使用PHX群集** -http://10.42.194.11/workshop_staging/peer/SampleData_Small.zip
@@ -137,7 +142,7 @@
    - **如果使用RTP群集** -http://10.55.251.38/workshop_staging/peer/SampleData_Small.zip
 
 
-#. 将zip文件的内容解压到您的文件共享中。
+4. 将zip文件的内容解压到您的文件共享中。
 
 .. figure::images / 5.png
 
@@ -146,25 +151,26 @@
    -管理其他用户的访问权限与任何其他SMB共享的方式相同。
 
 
-..  #. 在``\\ BootcampFS.ntnxlab.local \''中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
+..  1). 在``\\ BootcampFS.ntnxlab.local \''中，右键单击 *Initials* \ **-FiestaShare> Properties** 。
 
-    #. 选择 **Security **选项卡，然后单击 **Advanced** 。
+    2). 选择 **Security **选项卡，然后单击 **Advanced** 。
 
       .. figure::images / 6.png
 
 
-    #. 选择 **Users（BootcampFS \\ Users**，然后单击 **Remove** 。
+    3). 选择 **Users（BootcampFS \\ Users**，然后单击 **Remove** 。
 
 
-    #. 点击 **Add** 。
+    4). 点击 **Add** 。
 
 
-    #. 单击 **Select a principal**，然后在 **Object Name ** 字段中指定 **Everyone** 。点击 **OK** 。
+    5). 单击 **Select a principal**，然后在 **Object Name ** 字段中指定 **Everyone** 。点击 **OK** 。
+
 
    .. figure::images / 7.png
 
 
-    #. 填写以下字段，然后单击 **OK** ：
+    6). 填写以下字段，然后单击 **OK** ：
 
       - **Type** -允许
 
@@ -178,15 +184,17 @@
 
       -选择 **Write ** 
 
+
       .. Figure :: images / 8.png
 
 
-    #. 单击 **OK > OK > OK** 以保存权限更改。
+    7). 单击 **OK > OK > OK** 以保存权限更改。
+
 
    现在，所有用户都可以在 *Initials* \ **-FiestaShare** 共享中创建文件夹和文件。
 
 
-#. 打开 **PowerShell** 并尝试通过执行以下命令来创建文件类型被设定为被阻止的文件：
+5. 打开 **PowerShell** 并尝试通过执行以下命令来创建文件类型被设定为被阻止的文件：
 
 .. code-block:: PowerShell
 
@@ -196,7 +204,7 @@
    观察到创建新文件被拒绝。
 
 
-#. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
+6. 返回 **Prism Element > File Server > Share/Expor** ，选择您的共享。查看 **Share Details** ， **Usage** 和 **Performance** 选项卡，以了解每个共享的高级信息，包括文件和连接的数量，一段时间内的存储利用率，延迟，吞吐量和IOPS。
 
 
 .. figure::images / 11.png
@@ -210,7 +218,7 @@ File Analytics
 
 在本练习中，您将探索Nutanix Files中集成的新的文件分析功能，包括扫描现有共享，创建异常警报以及查看审核详细信息。通过Prism Element中的自动 **一键式** 操作，几分钟即可将File Analytics作为独立的VM进行部署。为了节省实验时间，此VM已在您的环境中部署并启用。
 
-#. 在 **Prism Element > File Server > File Server** 中，选择 **BootcampFS** ，然后单击 **File Analytics** 。
+1. 在 **Prism Element > File Server > File Server** 中，选择 **BootcampFS** ，然后单击 **File Analytics** 。
 
 .. figure::images / 12.png
 
@@ -227,7 +235,7 @@ File Analytics
 .. figure::images / old13.png
 
 
-#. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
+2. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
 
 
 .. figure::images / 14.png
@@ -239,33 +247,33 @@ File Analytics
       如果您的共享未显示在主页面，请给它一些时间来完成数据填充...
 
 
-#. 关闭 **Scan File System** 窗口并刷新浏览器。
+3. 关闭 **Scan File System** 窗口并刷新浏览器。
 
-#. 您应该会看到 **Data Age** ，**File Distribution by Size** 和 **File Distribution by Type** 仪表板更新。
+4. 您应该会看到 **Data Age** ，**File Distribution by Size** 和 **File Distribution by Type** 仪表板更新。
 
 
 .. figure::images / 15.png
 
 
-#. 在您的 *Initials* \ **-WinTools** VM中，通过打开 **Sample Data** 目录下的几个文件来触发一些审计跟踪活动。
+5. 在您的 *Initials* \ **-WinTools** VM中，通过打开 **Sample Data** 目录下的几个文件来触发一些审计跟踪活动。
 
 
 .. Note:: 如果使用OpenOffice打开文件，则可能需要完成该应用程序的一些简短向导操作。
 
 
-#. 在浏览器中刷新 **Dashboard** 页面，以查看 **Top 5 Active Users**，**Top 5 Accessed Files** 和 **File Operations** 面板的更新。
+6. 在浏览器中刷新 **Dashboard** 页面，以查看 **Top 5 Active Users**，**Top 5 Accessed Files** 和 **File Operations** 面板的更新。
 
 
 .. figure::images / 17.png
 
 
-#. 要访问您的用户帐户的审计跟踪活动，请在 **Top 5 Active Users** 下单击您的用户。
+7. 要访问您的用户帐户的审计跟踪活动，请在 **Top 5 Active Users** 下单击您的用户。
 
 
 .. figure::images / 17b.png
 
 
-#. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
+8. 另外，您也可以从工具栏中选择 **Audit Trails**，然后搜索您的用户或指定的文件名。
 
 
 .. figure::images / 18.png
@@ -278,7 +286,7 @@ File Analytics
 
  ..
 
-#. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
+9. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
 
 
 .. figure::images / 19.png
@@ -290,7 +298,7 @@ File Analytics
          Anomaly Rules（异常规则）是基于每个文件服务器定义的，因此以下规则可能已经由其他用户创建。
 
 
-#. 点击 **Define Anomaly Rules** ，并使用以下设置创建规则：
+10. 点击 **Define Anomaly Rules** ，并使用以下设置创建规则：
 
 
       - **Events:** Delete
@@ -300,10 +308,9 @@ File Analytics
       - **Type:** Hourly
       - **Interval:** 1
 
+11. 在 **Actions** 下，单击 **Save** 。
 
-#. 在 **Actions** 下，单击 **Save** 。
-
-#. 选择 **+ Configure new anomaly** ，并使用以下设置创建其他规则：
+12. 选择 **+ Configure new anomaly** ，并使用以下设置创建其他规则：
 
       - **Events**: Create
       - **Minimum Operation %**: 1
@@ -312,19 +319,19 @@ File Analytics
       - **Type**: Hourly
       - **Interval**: 1
 
-#. 在 **Actions** 下，单击 **Save** 。
+13. 在 **Actions** 下，单击 **Save** 。
 
 
 .. figure::images / 20.png
 
 
-#. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
+14. 单击 **Save** 以退出 **Define Anomaly Rules** 窗口。
 
 
-#. 要测试异常警报，请返回您的 *Initials* \ **-WinTools** VM，并在您的 *Initials* \ **-FiestaShare** 共享中制作第二个样本数据副本（通过复制/粘贴）。
+15. 要测试异常警报，请返回您的 *Initials* \ **-WinTools** VM，并在您的 *Initials* \ **-FiestaShare** 共享中制作第二个样本数据副本（通过复制/粘贴）。
 
 
-#. 删除原始样本数据文件夹。
+16. 删除原始样本数据文件夹。
 
 
 .. figure::images / 21.png
@@ -336,26 +343,26 @@ File Analytics
 .. Note:: 异常警报引擎每30分钟运行一次。虽然可以从File Analytics VM配置此设置，但修改此变量不在本练习的范围之内。
 
 
-    #. 在 *Initials* \ **-FiestaShare** 共享中创建一个名为 *Initials* \ **-MyFolder** 的新目录。
+    1). 在 *Initials* \ **-FiestaShare** 共享中创建一个名为 *Initials* \ **-MyFolder** 的新目录。
 
 
-    #. 在 *Initials* \ **-MyFolder** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt** 。
+    2). 在 *Initials* \ **-MyFolder** 目录中创建一个文本文件，并借用此机会短暂发泄一下心中的压抑和不满的情绪，并将他们写入到此文件中。将文件另存为 *Initials* \ **-file.txt** 。
 
 
 .. figure::images / 22.png
 
 
-    #. 右键单击 *Initials* \ **-MyFolder>Properties** 。 选择 **Security** 选项卡，然后单击 **Advanced** 。请注意，**用户（BootcampFS \\ Users)** 缺乏 **Full Control** 权限，这意味着他们将无法删除其他用户拥有的文件。
+    3). 右键单击 *Initials* \ **-MyFolder>Properties** 。 选择 **Security** 选项卡，然后单击 **Advanced** 。请注意，**用户（BootcampFS \\ Users)** 缺乏 **Full Control** 权限，这意味着他们将无法删除其他用户拥有的文件。
 
 .. figure::images / 23.png
 
 
-    #. 按住 **Shift** 键并右键单击任务栏中的 **PowerShell** 图标，然后选择以其他用户身份运行，以另一个非管理员用户帐户的身份打开PowerShell窗口。
+    4). 按住 **Shift** 键并右键单击任务栏中的 **PowerShell** 图标，然后选择以其他用户身份运行，以另一个非管理员用户帐户的身份打开PowerShell窗口。
 
 .. figure::images / 24.png
 
 
-    #. 将目录更改为 *Initials* \ **-FiestaShare** 共享中的 * Initials * \ **-MyFolder** 。
+    5). 将目录更改为 *Initials* \ **-FiestaShare** 共享中的 * Initials * \ **-MyFolder** 。
 
 .. code-block:: bash
 
@@ -363,7 +370,7 @@ File Analytics
            cd \\ BootcampFS.ntnxlab.local \ XYZ-FiestaShare \ XYZ-MyFolder
 
 
-    #. 执行以下命令：
+    6). 执行以下命令：
 
 
         .. code-block:: bash
@@ -375,19 +382,19 @@ File Analytics
       .. figure::images / 25.png
 
 
-    #. 返回 **Analytics > Dashboard** ，并注意 **Permission Denials** 和 **Anomaly Alerts** 小部件已更新。
+    7). 返回 **Analytics > Dashboard** ，并注意 **Permission Denials** 和 **Anomaly Alerts** 小部件已更新。
 
 
       .. figure::images / 26.png
 
 
-    #. 在 **Permission Denials** 下，选择您的用户帐户以查看完整的 **Audit Trail** ，并确认可以观察到您尝试删除的特定文件的事件，以及相应的IP地址和时间戳信息都已被记录。
+    8). 在 **Permission Denials** 下，选择您的用户帐户以查看完整的 **Audit Trail** ，并确认可以观察到您尝试删除的特定文件的事件，以及相应的IP地址和时间戳信息都已被记录。
 
 
    .. figure::images / 27.png
 
 
-    #. 从工具栏中选择 **Anomalies** ，以查看检测到的异常的概述。
+    9). 从工具栏中选择 **Anomalies** ，以查看检测到的异常的概述。
 
 
    .. figure::images / 28.png
@@ -408,12 +415,12 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
    每个文件服务器只需要执行一次NFS协议启用操作，并且在您的环境中可能已经完成。如果已启用NFS，请继续进行 `配置用户映射` 。
 
-#. 在 **Prism Element > File Server** 中，选择您的文件服务器，然后单击 **Protocol Management > Directory Services** 。
+1. 在 **Prism Element > File Server** 中，选择您的文件服务器，然后单击 **Protocol Management > Directory Services** 。
 
 .. figure:: images / 29b.png
 
 
-#. 选择 **Use NFS Protocol** 和 **Unmanaged** 用户管理和身份验证，然后单击 **Update** 。
+2. 选择 **Use NFS Protocol** 和 **Unmanaged** 用户管理和身份验证，然后单击 **Update** 。
 
 
 .. figure:: images / 30b.png
@@ -422,9 +429,9 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 创建导出
 .....................
 
-#. 在 **Prism > File Server** 中，单击 **+ Share/Export** 。
+1. 在 **Prism > File Server** 中，单击 **+ Share/Export** 。
 
-#. 填写以下字段：
+2. 填写以下字段：
 
    - **Name** - *initials*\ -logs
    - **Description (Optional)** - File share for system logs
@@ -436,9 +443,9 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 .. figure:: images / 24b.png
 
-#. 点击 **Next** 。
+3. 点击 **Next** 。
 
-#. 填写以下字段：
+4. 填写以下字段：
 
    -选择 **Enable Self Service Restore**  
        -这些快照显示为NFS客户端的.snapshot目录。
@@ -452,9 +459,9 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
    默认情况下，NFS导出将允许对挂载了该导出的任何主机进行读/写访问，但也可以将其限制为特定的IP或IP段。
 
-#. 点击 **Next** 。
+5. 点击 **Next** 。
 
-#. 查看 **Summary** ，然后单击 **Create** 。
+6. 查看 **Summary** ，然后单击 **Create** 。
 
 测试导出
 .....................
@@ -464,9 +471,9 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 .. note:: 如果您已将linux_tools_vm 在另一个实验中部署过，则可以将此VM用作NFS客户端。
 
-#. 在 **Prism> VM> Table** 中，单击 **Create VM** 。
+1. 在 **Prism> VM> Table** 中，单击 **Create VM** 。
 
-#. 填写以下字段：
+2. 填写以下字段：
 
    - **Name** - *Initials*\ -NFS-客户端
    - **Description** - CentOS VM for testing Files NFS export
@@ -481,18 +488,18 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
       - **VLAN Name** - Secondary
       - Select **Add**
 
-#. 点击 **Save** 。
+3. 点击 **Save** 。
 
 
-#. 选择 *Initials* \ **-NFS-Client** VM，然后单击 **Power on** 。
+4. 选择 *Initials* \ **-NFS-Client** VM，然后单击 **Power on** 。
 
 
-#. 在Prism中记下VM的IP地址，并使用以下凭据通过SSH连接：
+5. 在Prism中记下VM的IP地址，并使用以下凭据通过SSH连接：
 
    - **Username** - root
    - **Password** - nutanix/4u
 
-#. 执行以下命令：
+6. 执行以下命令：
 
 .. code-block:: bash
 
@@ -517,16 +524,16 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
        drwxrwxrwx. 2 root root 2 Mar  9 18:53 xyz-logs
 
 
-#. 观察 **logs** 目录已挂载在 ``/filesmnt/xyz-logs`` 中。
+7. 观察 **logs** 目录已挂载在 ``/filesmnt/xyz-logs`` 中。
 
-#. 重新启动VM，并观察到NFS导出目录不再被挂载。要保持永久挂载，通过执行以下命令将其添加到 ``/etc/fstab`` 配置文件中：
+8. 重新启动VM，并观察到NFS导出目录不再被挂载。要保持永久挂载，通过执行以下命令将其添加到 ``/etc/fstab`` 配置文件中：
 
 .. code-block:: bash
 
        echo 'BootcampFS.ntnxlab.local:/ /filesmnt nfs4' >> /etc/fstab
 
 
-#. 以下命令会用随机数据填充100个2MB的文件到 ``/filesmnt/logs`` 中：
+9. 以下命令会用随机数据填充100个2MB的文件到 ``/filesmnt/logs`` 中：
 
 .. code-block:: bash
 
@@ -534,7 +541,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
        for i in {1..100}; do dd if=/dev/urandom bs=8k count=256 of=/filesmnt/xyz-logs/host1/file$i; done
 
 
-#. 返回到 **Prism > File Server > Share > logs** ，以监视性能和使用情况。
+10. 返回到 **Prism > File Server > Share > logs** ，以监视性能和使用情况。
 
    请注意，利用率数据每10分钟更新一次。
 
@@ -549,39 +556,39 @@ Files不只可以分别提供SMB共享和NFS导出的功能-还可以支持提�
 
 Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使用原生协议应用。使用非原生协议的任何访问请求都需要用户或组映射到从原生协议端应用的权限。用户和组映射的映射可以通过多种方法实现，包括基于规则的映射，精确映射和默认映射。我们将首先配置默认映射：
 
-#. 在 **Prism Element > File Server** 中，选择文件服务器，然后单击 **Protocol Management > User Mapping** 。 
+1. 在 **Prism Element > File Server** 中，选择文件服务器，然后单击 **Protocol Management > User Mapping** 。 
 
-#. 单击两次 **Next** ，前进至 **Default Mapping** 。
+2. 单击两次 **Next** ，前进至 **Default Mapping** 。
 
-#. 在 **Default Mapping** 页面上，选择 **Deny access to NFS export** 和 **Deny access to SMB share** 作为未找到映射时的默认值。
+3. 在 **Default Mapping** 页面上，选择 **Deny access to NFS export** 和 **Deny access to SMB share** 作为未找到映射时的默认值。
 
 .. figure:: images / 31.png
 
-#. 单击 **Next > Save** 以完成默认映射。
+4. 单击 **Next > Save** 以完成默认映射。
 
-#. 在 **Prism Element > File Server** 中，选择您的 *Initials*\ **-FiestaShare** ，然后单击 **Update** 。
+5. 在 **Prism Element > File Server** 中，选择您的 *Initials*\ **-FiestaShare** ，然后单击 **Update** 。
 
-#. 在 **Basics** 下，选择 **Enable multiprotocol access for NFS** ，然后单击 **Next** 。
+6. 在 **Basics** 下，选择 **Enable multiprotocol access for NFS** ，然后单击 **Next** 。
 
 .. figure:: images / 32.png
 
 
-#. 在 **Settings > Multiprotocol Access** 下，选择 **Simultaneous access to the same files from both protocols** 。
+7. 在 **Settings > Multiprotocol Access** 下，选择 **Simultaneous access to the same files from both protocols** 。
 
 .. figure:: images / 33.png
 
 
-#. 单击 **Next > Save** 以完成更新共享设置。
+8. 单击 **Next > Save** 以完成更新共享设置。
 
 测试导出
 .......................
  
-#. 要测试NFS导出，请通过SSH连接到 *Initials* \ **-LinuxToolsVM** VM：
+1. 要测试NFS导出，请通过SSH连接到 *Initials* \ **-LinuxToolsVM** VM：
 
    - **User Name** - root
    - **Password** - nutanix/4u
 
-#. 执行以下命令：
+2. 执行以下命令：
 
 .. code-block:: bash
 
@@ -596,7 +603,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 因为默认映射是拒绝访问，所以会出现“权限被拒绝”错误。现在，您将添加一个精确（explicit）映射，以允许非原生NFS协议用户访问。我们将需要获取用户ID（UID）来创建精确映射。
 
-#. 执行以下命令并记下UID：
+3. 执行以下命令并记下UID：
 
 .. code-block:: bash
 
@@ -604,13 +611,13 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
        uid=0(root) gid=0(root) groups=0(root)
        [root@CentOS ~]#
 
-#. 在 **Prism Element > File Server** 中，选择文件服务器，然后单击 **Protocol Management > User Mapping** 。
+4. 在 **Prism Element > File Server** 中，选择文件服务器，然后单击 **Protocol Management > User Mapping** 。
 
-#. 单击 **Next** 前进到 **Explicit Mapping** 。
+5. 单击 **Next** 前进到 **Explicit Mapping** 。
 
-#. 在 **One-to-onemapping list** 下，单击 **Add manually** 。
+6. 在 **One-to-onemapping list** 下，单击 **Add manually** 。
 
-#. 填写以下字段：
+7. 填写以下字段：
 
    - **SMB Name** - NTNXLAB\\devuser01
    - **NFS ID** - UID from previous step (0 if root)
@@ -618,11 +625,11 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 .. figure:: images / 34.png
 
-#. 在 **Actions** 下，单击 **Save** 。
+8. 在 **Actions** 下，单击 **Save** 。
 
-#. 单击 **Next > Next > Save** 以完成更新映射。
+9. 单击 **Next > Next > Save** 以完成更新映射。
 
-#. 返回您的 *Initials*\ **-LinuxToolsVM** 的SSH会话，然后尝试再次访问共享：
+10. 返回您的 *Initials*\ **-LinuxToolsVM** 的SSH会话，然后尝试再次访问共享：
 
 .. code-block:: bash
 
@@ -630,7 +637,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
        Documents\ -\ Copy  Graphics\ -\ Copy  Pictures\ -\ Copy  Presentations\ -\ Copy  Recordings\ -\ Copy  Technical\ PDFs\ -\ Copy  XYZ-MyFolder
        [root@CentOS ~]#
 
-#. 在SSH会话中，创建一个文本文件，然后确认您可以从Windows客户端访问该文件。
+11. 在SSH会话中，创建一个文本文件，然后确认您可以从Windows客户端访问该文件。
 
 小贴士
 
