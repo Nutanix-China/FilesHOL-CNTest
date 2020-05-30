@@ -75,6 +75,8 @@
 
 .. figure:: images / 3.png
 
+
+
 .. Note::
      
     **Enable Access Based Enumeration** （基于访问的枚举（ABE）功能）将确保文件和文件夹只会对具有读取访问权限的文件和文件夹的用户可见，Windows文件共享通常启用此功能。
@@ -108,6 +110,7 @@
 
 .. figure:: images / 9.png
 
+
 9. 点击 **Save** 。
 
 
@@ -130,7 +133,9 @@
 ..
 
 .. figure:: images / 16.png
-   
+
+
+
 .. Note:: Windows Tools VM已加入 **NTNXLAB.local** 域。您可以使用任何加入域的VM来完成以下步骤。
 
 2. 在 **File Explorer** 中打开 ``\\ BootcampFS.ntnxlab.local \`` 
@@ -146,6 +151,7 @@
 4. 将zip文件的内容解压到您的文件共享中。
 
 .. figure:: images / 5.png
+
 
    -在Files群集的部署过程中， **NTNXLAB \\ Administrator** 用户被默认指定为文件管理员，默认情况下，授予该用户对所有共享的读/写访问权限。
 
@@ -223,6 +229,7 @@ File Analytics
 .. figure:: images / 12.png
 
 
+
 .. Note::
 
 
@@ -240,6 +247,7 @@ File Analytics
 
 
 .. figure:: images / 14.png
+
 
 
 .. Note::
@@ -263,6 +271,7 @@ File Analytics
 .. Note:: 如果使用OpenOffice打开文件，则可能需要完成该应用程序的一些简短向导操作。
 
 
+
 6. 在浏览器中刷新 **Dashboard** 页面，以查看 **Top 5 Active Users**，**Top 5 Accessed Files** 和 **File Operations** 面板的更新。
 
 
@@ -281,6 +290,8 @@ File Analytics
 .. figure:: images / 18.png
 
 
+
+
 .. Note::
 
 
@@ -292,6 +303,7 @@ File Analytics
 
 
 .. figure:: images / 19.png
+
 
 
 .. Note::
@@ -361,9 +373,12 @@ File Analytics
 .. figure:: images / 23.png
 
 
+
     4). 按住 **Shift** 键并右键单击任务栏中的 **PowerShell** 图标，然后选择以其他用户身份运行，以另一个非管理员用户帐户的身份打开PowerShell窗口。
 
 .. figure:: images / 24.png
+
+
 
 
     5). 将目录更改为 *Initials* \ **-FiestaShare** 共享中的 * Initials * \ **-MyFolder** 。
@@ -402,6 +417,7 @@ File Analytics
 
 
 .. figure:: images / 28.png
+
 
 
 File Analytics将简单而强大的信息交给存储管理员，使他们能够对Nutanix Files环境中的使用情况和访问权限有更加清晰的了解和审核能力。
@@ -448,6 +464,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 
 
 .. figure:: images / 24b.png
+
 
 3. 点击 **Next** 。
 
@@ -570,6 +587,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 .. figure:: images / 31.png
 
+
 4. 单击 **Next > Save** 以完成默认映射。
 
 5. 在 **Prism Element > File Server** 中，选择您的 *Initials*\ **-FiestaShare** ，然后单击 **Update** 。
@@ -607,6 +625,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
 
 .. note:: 安装操作区分大小写。
 
+
 因为默认映射是拒绝访问，所以会出现“权限被拒绝”错误。现在，您将添加一个精确（explicit）映射，以允许非原生NFS协议用户访问。我们将需要获取用户ID（UID）来创建精确映射。
 
 3. 执行以下命令并记下UID：
@@ -630,6 +649,7 @@ Nutanix Files 共享具有原生和非原生协议的概念。所有权限都使
    - **User/Group** - User
 
 .. figure:: images / 34.png
+
 
 8. 在 **Actions** 下，单击 **Save** 。
 
