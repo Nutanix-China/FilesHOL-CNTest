@@ -91,7 +91,7 @@
 6. 查看 **Summary** ，然后单击 **Create** 。
 
 
-.. figure::images / 4.png
+.. figure:: images / 4.png
 
 
    为了确保共享资源可能被多人公平地使用，采用配额是推荐的手段。通过Files，可以基于每个共享，为AD内的单个用户或特定的AD安全组按份额设置软配额或硬配额。
@@ -421,6 +421,7 @@ File Analytics将简单而强大的信息交给存储管理员，使他们能够
 ..
 
 1. 在 **Prism Element > File Server** 中，选择您的文件服务器，然后单击 **Protocol Management > Directory Services** 。
+
 
 .. figure:: images / 29b.png
 
