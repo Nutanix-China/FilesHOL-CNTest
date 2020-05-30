@@ -236,7 +236,7 @@ File Analytics
 .. figure:: images / old13.png
 
 
-2. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击:fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
+2. 由于这是一个共享环境，因此仪表板可能已经填充了其他用户创建的共享中的数据。要扫描新创建的共享，请单击 :fa:`gear` **>Scan File System** 。选择您的共享，然后单击 **Scan** 。
 
 
 .. figure:: images / 14.png
@@ -288,7 +288,7 @@ File Analytics
 
  ..
 
-9. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击:fa:`gear` **> Define Anomaly Rules**。
+9. 接下来，我们将创建规则以检测文件服务器上的异常行为。在工具栏中，点击 :fa:`gear` **> Define Anomaly Rules**。
 
 
 .. figure:: images / 19.png
